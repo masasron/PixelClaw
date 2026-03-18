@@ -8,6 +8,17 @@ drop.
 
 ## Quick Install
 
+Homebrew:
+
+```sh
+brew install masasron/tap/pixelclaw
+```
+
+That downloads and opens the latest DMG from GitHub. Then drag `PixelClaw.app`
+into `Applications`.
+
+Direct download:
+
 ```sh
 curl -fL https://github.com/masasron/PixelClaw/releases/download/v1.0.0/PixelClaw.dmg -o PixelClaw.dmg
 open PixelClaw.dmg
