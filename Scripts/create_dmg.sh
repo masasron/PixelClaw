@@ -49,7 +49,7 @@ cleanup() {
 trap cleanup EXIT
 
 mkdir -p "$STAGING_DIR" "$BACKGROUND_DIR" "$(dirname "$DMG_PATH")"
-cp -R "$APP_BUNDLE" "$STAGING_DIR/"
+ditto "$APP_BUNDLE" "$STAGING_DIR/$APP_NAME.app"
 ln -s /Applications "$STAGING_DIR/Applications"
 
 WINDOW_WIDTH="$WINDOW_WIDTH" \

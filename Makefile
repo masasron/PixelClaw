@@ -41,8 +41,8 @@ app: release
 	rm -rf $(APP_BUNDLE)
 	rm -rf $(ICONSET_DIR)
 	mkdir -p $(APP_MACOS_DIR) $(APP_RESOURCES_DIR) $(ICONSET_DIR)
-	cp $(RELEASE_BINARY) $(APP_MACOS_DIR)/$(APP_NAME)
-	cp -R $(RELEASE_RESOURCE_BUNDLE) $(APP_RESOURCES_DIR)/
+	install -m 755 $(RELEASE_BINARY) $(APP_MACOS_DIR)/$(APP_NAME)
+	ditto $(RELEASE_RESOURCE_BUNDLE) $(APP_RESOURCES_DIR)/$(notdir $(RELEASE_RESOURCE_BUNDLE))
 	sips -z 16 16 $(ICON_SOURCE) --out $(ICONSET_DIR)/icon_16x16.png
 	sips -z 32 32 $(ICON_SOURCE) --out $(ICONSET_DIR)/icon_16x16@2x.png
 	sips -z 32 32 $(ICON_SOURCE) --out $(ICONSET_DIR)/icon_32x32.png
@@ -84,7 +84,6 @@ app: release
 		'</dict>' \
 		'</plist>' > $(APP_PLIST)
 	rm -rf $(ICONSET_DIR)
-	chmod +x $(APP_MACOS_DIR)/$(APP_NAME)
 	@echo "Created $(APP_BUNDLE)"
 
 clean:
